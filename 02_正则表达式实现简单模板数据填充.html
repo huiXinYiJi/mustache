@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mustache的基本使用</title>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script>
+      var templateStr = `h1>我买了一个{{thing}}</h1>, 心情很{{mood}}`;
+
+      var data = {
+        thing: "手机",
+        mood: "开心",
+      };
+
+      console.log(
+        templateStr.replace(/\{\{(\w+)\}\}/g, function (findStr, $1, key, ori) {
+          console.log(findStr, $1, key); // {{thing}} thing 8
+          return data[$1];
+        })
+      );
+    </script>
+  </body>
+</html>
